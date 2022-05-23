@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.StorageTable = new System.Windows.Forms.DataGridView();
             this.ProductLabel = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProductMeasure = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProductCost = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -41,36 +41,37 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.EnteredProductLabel = new System.Windows.Forms.TextBox();
-            this.EnteredProductMeasure = new System.Windows.Forms.TextBox();
             this.EnteredProductCost = new System.Windows.Forms.TextBox();
             this.EnteredProductCount = new System.Windows.Forms.TextBox();
-            this.EnteredProductLastDateDelivery = new System.Windows.Forms.TextBox();
             this.AcceptedArrival = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.DeniedArrival = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.AcceptedUnloading = new System.Windows.Forms.Button();
-            this.DeniedUnloading = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.UploadInventory = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.DayBox = new System.Windows.Forms.ComboBox();
+            this.MonthsBox = new System.Windows.Forms.ComboBox();
+            this.YearsBox = new System.Windows.Forms.ComboBox();
+            this.MeasuresBox = new System.Windows.Forms.ComboBox();
+            ((System.ComponentModel.ISupportInitialize)(this.StorageTable)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // StorageTable
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.StorageTable.AllowUserToAddRows = false;
+            this.StorageTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.StorageTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ProductLabel,
             this.ProductMeasure,
             this.ProductCost,
             this.ProductCount,
             this.ProductLastDateDelivery});
-            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(794, 267);
-            this.dataGridView1.TabIndex = 0;
+            this.StorageTable.Location = new System.Drawing.Point(0, 0);
+            this.StorageTable.Name = "StorageTable";
+            this.StorageTable.RowTemplate.Height = 25;
+            this.StorageTable.Size = new System.Drawing.Size(794, 267);
+            this.StorageTable.TabIndex = 0;
             // 
             // ProductLabel
             // 
@@ -165,13 +166,6 @@
             this.EnteredProductLabel.Size = new System.Drawing.Size(100, 23);
             this.EnteredProductLabel.TabIndex = 7;
             // 
-            // EnteredProductMeasure
-            // 
-            this.EnteredProductMeasure.Location = new System.Drawing.Point(113, 351);
-            this.EnteredProductMeasure.Name = "EnteredProductMeasure";
-            this.EnteredProductMeasure.Size = new System.Drawing.Size(100, 23);
-            this.EnteredProductMeasure.TabIndex = 8;
-            // 
             // EnteredProductCost
             // 
             this.EnteredProductCost.Location = new System.Drawing.Point(113, 385);
@@ -186,13 +180,6 @@
             this.EnteredProductCount.Size = new System.Drawing.Size(100, 23);
             this.EnteredProductCount.TabIndex = 10;
             // 
-            // EnteredProductLastDateDelivery
-            // 
-            this.EnteredProductLastDateDelivery.Location = new System.Drawing.Point(113, 456);
-            this.EnteredProductLastDateDelivery.Name = "EnteredProductLastDateDelivery";
-            this.EnteredProductLastDateDelivery.Size = new System.Drawing.Size(100, 23);
-            this.EnteredProductLastDateDelivery.TabIndex = 11;
-            // 
             // AcceptedArrival
             // 
             this.AcceptedArrival.Location = new System.Drawing.Point(336, 311);
@@ -201,6 +188,7 @@
             this.AcceptedArrival.TabIndex = 12;
             this.AcceptedArrival.Text = "Так";
             this.AcceptedArrival.UseVisualStyleBackColor = true;
+            this.AcceptedArrival.Click += new System.EventHandler(this.AcceptedArrival_Click);
             // 
             // label7
             // 
@@ -219,6 +207,7 @@
             this.DeniedArrival.TabIndex = 14;
             this.DeniedArrival.Text = "Ні";
             this.DeniedArrival.UseVisualStyleBackColor = true;
+            this.DeniedArrival.Click += new System.EventHandler(this.DeniedArrival_Click);
             // 
             // label8
             // 
@@ -237,15 +226,7 @@
             this.AcceptedUnloading.TabIndex = 16;
             this.AcceptedUnloading.Text = "Так";
             this.AcceptedUnloading.UseVisualStyleBackColor = true;
-            // 
-            // DeniedUnloading
-            // 
-            this.DeniedUnloading.Location = new System.Drawing.Point(435, 384);
-            this.DeniedUnloading.Name = "DeniedUnloading";
-            this.DeniedUnloading.Size = new System.Drawing.Size(75, 23);
-            this.DeniedUnloading.TabIndex = 17;
-            this.DeniedUnloading.Text = "Ні";
-            this.DeniedUnloading.UseVisualStyleBackColor = true;
+            this.AcceptedUnloading.Click += new System.EventHandler(this.AcceptedUnloading_Click);
             // 
             // label9
             // 
@@ -265,24 +246,151 @@
             this.UploadInventory.Text = "Загрузити";
             this.UploadInventory.UseVisualStyleBackColor = true;
             // 
+            // DayBox
+            // 
+            this.DayBox.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.DayBox.FormattingEnabled = true;
+            this.DayBox.Items.AddRange(new object[] {
+            "01",
+            "02",
+            "03",
+            "04",
+            "05",
+            "06",
+            "07",
+            "08",
+            "09",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22",
+            "23",
+            "24",
+            "25",
+            "26",
+            "27",
+            "28",
+            "29",
+            "30",
+            "31"});
+            this.DayBox.Location = new System.Drawing.Point(113, 459);
+            this.DayBox.Name = "DayBox";
+            this.DayBox.Size = new System.Drawing.Size(47, 23);
+            this.DayBox.TabIndex = 20;
+            // 
+            // MonthsBox
+            // 
+            this.MonthsBox.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.MonthsBox.FormattingEnabled = true;
+            this.MonthsBox.Items.AddRange(new object[] {
+            "01",
+            "02",
+            "03",
+            "04",
+            "05",
+            "06",
+            "07",
+            "08",
+            "09",
+            "10",
+            "11",
+            "12"});
+            this.MonthsBox.Location = new System.Drawing.Point(166, 459);
+            this.MonthsBox.Name = "MonthsBox";
+            this.MonthsBox.Size = new System.Drawing.Size(72, 23);
+            this.MonthsBox.TabIndex = 21;
+            // 
+            // YearsBox
+            // 
+            this.YearsBox.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.YearsBox.FormattingEnabled = true;
+            this.YearsBox.Items.AddRange(new object[] {
+            "1992",
+            "1993",
+            "1994",
+            "1995",
+            "1996",
+            "1997",
+            "1998",
+            "1999",
+            "2000",
+            "2001",
+            "2002",
+            "2003",
+            "2004",
+            "2005",
+            "2006",
+            "2007",
+            "2008",
+            "2009",
+            "2010",
+            "2011",
+            "2012",
+            "2013",
+            "2014",
+            "2015",
+            "2016",
+            "2017",
+            "2018",
+            "2019",
+            "2020",
+            "2021",
+            "2022"});
+            this.YearsBox.Location = new System.Drawing.Point(244, 459);
+            this.YearsBox.Name = "YearsBox";
+            this.YearsBox.Size = new System.Drawing.Size(63, 23);
+            this.YearsBox.TabIndex = 22;
+            // 
+            // MeasuresBox
+            // 
+            this.MeasuresBox.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.MeasuresBox.FormattingEnabled = true;
+            this.MeasuresBox.Items.AddRange(new object[] {
+            "Літр",
+            "Мілілітр",
+            "Тонна",
+            "Кілограм",
+            "Грам",
+            "Центнер",
+            "Метр ",
+            "Кілометр",
+            "Сантиметр",
+            "Дециметр",
+            "Міліметр",
+            "Мікрометр"});
+            this.MeasuresBox.Location = new System.Drawing.Point(113, 351);
+            this.MeasuresBox.Name = "MeasuresBox";
+            this.MeasuresBox.Size = new System.Drawing.Size(100, 23);
+            this.MeasuresBox.TabIndex = 23;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(795, 494);
+            this.Controls.Add(this.MeasuresBox);
+            this.Controls.Add(this.YearsBox);
+            this.Controls.Add(this.MonthsBox);
+            this.Controls.Add(this.DayBox);
             this.Controls.Add(this.UploadInventory);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.DeniedUnloading);
             this.Controls.Add(this.AcceptedUnloading);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.DeniedArrival);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.AcceptedArrival);
-            this.Controls.Add(this.EnteredProductLastDateDelivery);
             this.Controls.Add(this.EnteredProductCount);
             this.Controls.Add(this.EnteredProductCost);
-            this.Controls.Add(this.EnteredProductMeasure);
             this.Controls.Add(this.EnteredProductLabel);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -290,10 +398,10 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.StorageTable);
             this.Name = "Form1";
             this.Text = "Склад";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.StorageTable)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -301,7 +409,7 @@
 
         #endregion
 
-        private DataGridView dataGridView1;
+        private DataGridView StorageTable;
         private DataGridViewTextBoxColumn ProductLabel;
         private DataGridViewTextBoxColumn ProductMeasure;
         private DataGridViewTextBoxColumn ProductCost;
@@ -314,17 +422,18 @@
         private Label label5;
         private Label label6;
         private TextBox EnteredProductLabel;
-        private TextBox EnteredProductMeasure;
         private TextBox EnteredProductCost;
         private TextBox EnteredProductCount;
-        private TextBox EnteredProductLastDateDelivery;
         private Button AcceptedArrival;
         private Label label7;
         private Button DeniedArrival;
         private Label label8;
         private Button AcceptedUnloading;
-        private Button DeniedUnloading;
         private Label label9;
         private Button UploadInventory;
+        private ComboBox DayBox;
+        private ComboBox MonthsBox;
+        private ComboBox YearsBox;
+        private ComboBox MeasuresBox;
     }
 }
