@@ -54,10 +54,10 @@
             this.MonthsBox = new System.Windows.Forms.ComboBox();
             this.YearsBox = new System.Windows.Forms.ComboBox();
             this.MeasuresBox = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.LoadFile = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
+            this.SaveFile = new System.Windows.Forms.Button();
             this.openFD = new System.Windows.Forms.OpenFileDialog();
             this.saveFD = new System.Windows.Forms.SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.StorageTable)).BeginInit();
@@ -379,15 +379,15 @@
             this.MeasuresBox.Size = new System.Drawing.Size(100, 23);
             this.MeasuresBox.TabIndex = 23;
             // 
-            // button1
+            // LoadFile
             // 
-            this.button1.Location = new System.Drawing.Point(566, 380);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(94, 23);
-            this.button1.TabIndex = 24;
-            this.button1.Text = "Завантажити";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.LoadFile.Location = new System.Drawing.Point(566, 380);
+            this.LoadFile.Name = "LoadFile";
+            this.LoadFile.Size = new System.Drawing.Size(94, 23);
+            this.LoadFile.TabIndex = 24;
+            this.LoadFile.Text = "Завантажити";
+            this.LoadFile.UseVisualStyleBackColor = true;
+            this.LoadFile.Click += new System.EventHandler(this.LoadFile_Click);
             // 
             // label10
             // 
@@ -407,15 +407,15 @@
             this.label11.TabIndex = 26;
             this.label11.Text = "Зберегти базу товарів";
             // 
-            // button2
+            // SaveFile
             // 
-            this.button2.Location = new System.Drawing.Point(566, 451);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(94, 23);
-            this.button2.TabIndex = 27;
-            this.button2.Text = "Зберегти";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.SaveFile.Location = new System.Drawing.Point(566, 451);
+            this.SaveFile.Name = "SaveFile";
+            this.SaveFile.Size = new System.Drawing.Size(94, 23);
+            this.SaveFile.TabIndex = 27;
+            this.SaveFile.Text = "Зберегти";
+            this.SaveFile.UseVisualStyleBackColor = true;
+            this.SaveFile.Click += new System.EventHandler(this.SaveFile_Click);
             // 
             // openFD
             // 
@@ -427,10 +427,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(795, 494);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.SaveFile);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.LoadFile);
             this.Controls.Add(this.MeasuresBox);
             this.Controls.Add(this.YearsBox);
             this.Controls.Add(this.MonthsBox);
@@ -488,10 +488,10 @@
         private ComboBox MonthsBox;
         private ComboBox YearsBox;
         private ComboBox MeasuresBox;
-        private Button button1;
+        private Button LoadFile;
         private Label label10;
         private Label label11;
-        private Button button2;
+        private Button SaveFile;
         private OpenFileDialog openFD;
         private SaveFileDialog saveFD;
     }

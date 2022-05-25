@@ -116,7 +116,7 @@ namespace Storage
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void LoadFile_Click(object sender, EventArgs e)
         {
             if (openFD.ShowDialog() == DialogResult.OK)
             {
@@ -131,10 +131,15 @@ namespace Storage
             }    
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void SaveFile_Click(object sender, EventArgs e)
         {
-            var lc = new Logic();
-            lc.SaveDataGridView(StorageTable);
+            if (saveFD.ShowDialog() == DialogResult.OK)
+            {
+                string folderPath = saveFD.FileName.ToString();
+                var lc = new Logic();
+                string a = lc.SaveDataGridView(StorageTable);
+                File.WriteAllText(folderPath, a);
+            }
         }
     }
 }

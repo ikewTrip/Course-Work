@@ -8,6 +8,6 @@ namespace Storage
 {
     public class Load
     {
-        public List<Product> Products { get; set; }
+        public List<Product> Products { get; set; } = new List<Product> ();
     }
 }

@@ -55,7 +55,25 @@ namespace Storage
         public string SaveDataGridView(DataGridView table)
         {
             var Storage = new Load();
+            int counter = table.Rows.Count;
 
+            if ( counter == 0)
+            {
+                MessageBox.Show("Таблиця пуста!");
+                return "";
+            }
+
+            for ( int i = 0; i < counter; i++)
+            {
+                var product = new Product();
+                product.Name = table.Rows[i].Cells[0].Value.ToString();
+                product.Measure = table.Rows[i].Cells[1].Value.ToString();
+                product.Cost = int.Parse(table.Rows[i].Cells[2].Value.ToString());
+                product.Count = int.Parse(table.Rows[i].Cells[3].Value.ToString());
+                product.LastDateDelivery = table.Rows[i].Cells[4].Value.ToString();
+                Storage.Products.Add(product);
+            }
+            
             string json = null;
             
             try
