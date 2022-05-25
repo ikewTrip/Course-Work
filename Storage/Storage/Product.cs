@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Storage
 {
-    class Product 
+    public class Product 
     {
         public string Name { get; set; }
         public string Measure { get; set; }
@@ -22,6 +22,7 @@ namespace Storage
             Count = count;
             LastDateDelivery = lastDateDelivery;
         }
+
         public Product()
         {
 

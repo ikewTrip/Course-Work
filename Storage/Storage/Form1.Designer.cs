@@ -54,6 +54,12 @@
             this.MonthsBox = new System.Windows.Forms.ComboBox();
             this.YearsBox = new System.Windows.Forms.ComboBox();
             this.MeasuresBox = new System.Windows.Forms.ComboBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
+            this.openFD = new System.Windows.Forms.OpenFileDialog();
+            this.saveFD = new System.Windows.Forms.SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.StorageTable)).BeginInit();
             this.SuspendLayout();
             // 
@@ -182,9 +188,9 @@
             // 
             // AcceptedArrival
             // 
-            this.AcceptedArrival.Location = new System.Drawing.Point(336, 311);
+            this.AcceptedArrival.Location = new System.Drawing.Point(244, 311);
             this.AcceptedArrival.Name = "AcceptedArrival";
-            this.AcceptedArrival.Size = new System.Drawing.Size(75, 23);
+            this.AcceptedArrival.Size = new System.Drawing.Size(63, 23);
             this.AcceptedArrival.TabIndex = 12;
             this.AcceptedArrival.Text = "Так";
             this.AcceptedArrival.UseVisualStyleBackColor = true;
@@ -193,7 +199,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(336, 280);
+            this.label7.Location = new System.Drawing.Point(244, 286);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(278, 15);
             this.label7.TabIndex = 13;
@@ -201,9 +207,9 @@
             // 
             // DeniedArrival
             // 
-            this.DeniedArrival.Location = new System.Drawing.Point(435, 311);
+            this.DeniedArrival.Location = new System.Drawing.Point(337, 311);
             this.DeniedArrival.Name = "DeniedArrival";
-            this.DeniedArrival.Size = new System.Drawing.Size(75, 23);
+            this.DeniedArrival.Size = new System.Drawing.Size(63, 23);
             this.DeniedArrival.TabIndex = 14;
             this.DeniedArrival.Text = "Ні";
             this.DeniedArrival.UseVisualStyleBackColor = true;
@@ -212,7 +218,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(336, 354);
+            this.label8.Location = new System.Drawing.Point(244, 351);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(288, 15);
             this.label8.TabIndex = 15;
@@ -220,9 +226,9 @@
             // 
             // AcceptedUnloading
             // 
-            this.AcceptedUnloading.Location = new System.Drawing.Point(336, 384);
+            this.AcceptedUnloading.Location = new System.Drawing.Point(244, 380);
             this.AcceptedUnloading.Name = "AcceptedUnloading";
-            this.AcceptedUnloading.Size = new System.Drawing.Size(75, 23);
+            this.AcceptedUnloading.Size = new System.Drawing.Size(63, 23);
             this.AcceptedUnloading.TabIndex = 16;
             this.AcceptedUnloading.Text = "Так";
             this.AcceptedUnloading.UseVisualStyleBackColor = true;
@@ -231,20 +237,21 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(336, 425);
+            this.label9.Location = new System.Drawing.Point(566, 286);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(179, 15);
+            this.label9.Size = new System.Drawing.Size(195, 15);
             this.label9.TabIndex = 18;
-            this.label9.Text = "Загрузити інвентарну відомість";
+            this.label9.Text = "Завантажити інвентарну відомість";
             // 
             // UploadInventory
             // 
-            this.UploadInventory.Location = new System.Drawing.Point(336, 455);
+            this.UploadInventory.Location = new System.Drawing.Point(566, 311);
             this.UploadInventory.Name = "UploadInventory";
-            this.UploadInventory.Size = new System.Drawing.Size(75, 23);
+            this.UploadInventory.Size = new System.Drawing.Size(94, 23);
             this.UploadInventory.TabIndex = 19;
-            this.UploadInventory.Text = "Загрузити";
+            this.UploadInventory.Text = "Завантажити";
             this.UploadInventory.UseVisualStyleBackColor = true;
+            this.UploadInventory.Click += new System.EventHandler(this.UploadInventory_Click);
             // 
             // DayBox
             // 
@@ -372,12 +379,58 @@
             this.MeasuresBox.Size = new System.Drawing.Size(100, 23);
             this.MeasuresBox.TabIndex = 23;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(566, 380);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(94, 23);
+            this.button1.TabIndex = 24;
+            this.button1.Text = "Завантажити";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(566, 351);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(151, 15);
+            this.label10.TabIndex = 25;
+            this.label10.Text = "Завантажити базу товарів ";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(566, 422);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(127, 15);
+            this.label11.TabIndex = 26;
+            this.label11.Text = "Зберегти базу товарів";
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(566, 451);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(94, 23);
+            this.button2.TabIndex = 27;
+            this.button2.Text = "Зберегти";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // openFD
+            // 
+            this.openFD.FileName = "openFD";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(795, 494);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.MeasuresBox);
             this.Controls.Add(this.YearsBox);
             this.Controls.Add(this.MonthsBox);
@@ -435,5 +488,11 @@
         private ComboBox MonthsBox;
         private ComboBox YearsBox;
         private ComboBox MeasuresBox;
+        private Button button1;
+        private Label label10;
+        private Label label11;
+        private Button button2;
+        private OpenFileDialog openFD;
+        private SaveFileDialog saveFD;
     }
 }

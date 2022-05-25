@@ -1,3 +1,5 @@
+using Newtonsoft.Json;
+
 namespace Storage
 {
     public partial class Form1 : Form
@@ -100,8 +102,39 @@ namespace Storage
 
         private void DeniedArrival_Click(object sender, EventArgs e)
         {
+            EnteredProductLabel.Clear();
+            MeasuresBox.ResetText();
+            EnteredProductCost.Clear();
+            EnteredProductCount.Clear();
+            DayBox.ResetText();
+            MonthsBox.ResetText();
+            YearsBox.ResetText();
+        }
+
+        private void UploadInventory_Click(object sender, EventArgs e)
+        {
 
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (openFD.ShowDialog() == DialogResult.OK)
+            {
+                string folderPath;
+                folderPath = openFD.FileName.ToString();
+                if (openFD.OpenFile() != null)
+                {
+                    string json = File.ReadAllText(folderPath);
+                    var lc = new Logic();
+                    lc.FillDataGridView(StorageTable, json);
+                }
+            }    
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            var lc = new Logic();
+            lc.SaveDataGridView(StorageTable);
+        }
     }
 }
