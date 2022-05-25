@@ -133,12 +133,107 @@ namespace Storage
 
         private void SaveFile_Click(object sender, EventArgs e)
         {
+            for (int i = 0; i < StorageTable.Rows.Count; i++)
+            {
+                string v = StorageTable.Rows[i].Cells[1].Value.ToString();
+                foreach (var a in MeasuresBox.Items)
+                {
+                    if (v == a.ToString())
+                    {
+                        StorageTable.Rows[i].Cells[1].Value = v;
+                        break;
+                    }
+                    else
+                    {
+                        StorageTable.Rows[i].Cells[1].Value = "Error_12345";
+                    }
+                }
+
+                if (StorageTable.Rows[i].Cells[1].Value == "Error_12345")
+                {
+                    MessageBox.Show($"Введіть коректні дані (Од. вим. : {i + 1} рядок).");
+                    StorageTable.Rows[i].Cells[1].Value = "";
+                    return;
+                }
+            }
+
+            for (int i = 0; i < StorageTable.Rows.Count; i++)
+            {
+                if (int.TryParse(StorageTable.Rows[i].Cells[2].Value.ToString(), out _) == false)
+                {
+                    MessageBox.Show($"Введіть коректні дані (Ціна: {i + 1} рядок).");
+                    StorageTable.Rows[i].Cells[2].Value = "";
+                    return;
+                }
+            }
+
+            for (int i = 0; i < StorageTable.Rows.Count; i++)
+            {
+                if (int.TryParse(StorageTable.Rows[i].Cells[3].Value.ToString(), out _) == false)
+                {
+                    MessageBox.Show($"Введіть коректні дані (Кількість: {i + 1} рядок).");
+                    StorageTable.Rows[i].Cells[3].Value = "";
+                    return;
+                }
+            }
+            for (int i = 0; i < StorageTable.Rows.Count; i++) 
+            { 
+                string Date = StorageTable.Rows[i].Cells[4].Value.ToString();
+                string[] partsOfDate = Date.Split(".");
+                string day = partsOfDate[0];
+                string month = partsOfDate[1];
+                string year = partsOfDate[2];
+                foreach (var a in DayBox.Items)
+                {
+                    if (day == a.ToString())
+                    {
+                        partsOfDate[0] = day;
+                        break;
+                    }
+                    else
+                    {
+                        partsOfDate[0] = "Error_12345";
+                    }
+                }
+                foreach (var a in MonthsBox.Items)
+                {
+                    if (month == a.ToString())
+                    {
+                        partsOfDate[1] = month;
+                        break;
+                    }
+                    else
+                    {
+                        partsOfDate[1] = "Error_12345";
+                    }
+                }
+                foreach (var a in YearsBox.Items)
+                {
+                    if (year == a.ToString())
+                    {
+                        partsOfDate[2] = year;
+                        break;
+                    }
+                    else
+                    {
+                        partsOfDate[2] = "Error_12345";
+                    }
+                }
+                if (partsOfDate[0] == "Error_12345" || partsOfDate[1] == "Error_12345" || partsOfDate[2] == "Error_12345")
+                {
+                    MessageBox.Show($"Введіть коректні дані (Дата : {i + 1} рядок).");
+                    StorageTable.Rows[i].Cells[4].Value = "";
+                    return;
+                }
+            }
+
             if (saveFD.ShowDialog() == DialogResult.OK)
             {
-                string folderPath = saveFD.FileName.ToString();
+                string folderPath = saveFD.FileName.ToString() + ".txt";
                 var lc = new Logic();
                 string a = lc.SaveDataGridView(StorageTable);
                 File.WriteAllText(folderPath, a);
+                StorageTable.Rows.Clear();
             }
         }
     }

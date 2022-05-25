@@ -51,7 +51,6 @@ namespace Storage
                 }
             }
         }
-
         public string SaveDataGridView(DataGridView table)
         {
             var Storage = new Load();
