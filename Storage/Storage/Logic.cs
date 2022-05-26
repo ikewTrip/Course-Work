@@ -16,6 +16,7 @@ namespace Storage
                 table.Rows.RemoveAt(row.Index);
             }
         }
+
         public void FillDataGridView(DataGridView table, string json)
         {
             var Storage = new Load();
@@ -51,6 +52,7 @@ namespace Storage
                 }
             }
         }
+
         public string SaveDataGridView(DataGridView table)
         {
             var Storage = new Load();
@@ -93,6 +95,28 @@ namespace Storage
                 MessageBox.Show("Таблиця пуста!");
                 return "0";
             }
+        }
+
+        public string SetInventoryText(DataGridView tableData)
+        {
+            string totalInventoryText = "";
+
+            if (tableData.Rows.Count == 0)
+            {
+                return "";
+            }
+            for (int i = 0; i < tableData.Rows.Count; i++)
+            {
+                string start = $"Продукт №{i + 1}: \n";
+                string productName = $"Найменування товару: {tableData.Rows[i].Cells[0].Value};\n";
+                string productMeasure = $"Одиниця виміру товару: {tableData.Rows[i].Cells[1].Value};\n";
+                string productCost = $"Ціна товару за одиницю: {tableData.Rows[i].Cells[2].Value};\n";
+                string productCount = $"Кількість одиниць товару: {tableData.Rows[i].Cells[3].Value};\n";
+                string productLastDateDelivery = $"Дата останнього завезення товару: {tableData.Rows[i].Cells[4].Value};\n\n";
+                totalInventoryText = totalInventoryText + start + productName + productMeasure + productCost + productCount + productLastDateDelivery;
+            }
+
+            return totalInventoryText;
         }
     }
 }
