@@ -92,11 +92,39 @@ namespace Storage
                 MonthsBox.ResetText();
                 YearsBox.ResetText();
             }
+
+            if (saveFD.ShowDialog() == DialogResult.OK)
+            {
+                Logic lc = new Logic();
+                string str = lc.SetArrivalText(aP, Cost, Count);
+                string folderPath = saveFD.FileName.ToString() + ".txt";
+                File.WriteAllText(folderPath, str);
+                MessageBox.Show($"Прибуткова накладна сформована!\n\n Перевірити: {folderPath}");
+            }
         }
 
         private void AcceptedUnloading_Click(object sender, EventArgs e)
         {
+            if(StorageTable.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Товари для видалення за таблиці не виділені!");
+                return;
+            }
+
             var lc = new Logic();
+
+            if (saveFD.ShowDialog() == DialogResult.OK)
+            {
+                string folderPath = saveFD.FileName.ToString() + ".txt";
+                string str = lc.SetUnloadingText(StorageTable);
+                File.WriteAllText(folderPath, str);
+                MessageBox.Show($"Видаткова накладна сформована і записана в файл за шляхом:\n\n {folderPath};");
+            }
+            else
+            {
+                return;
+            }
+            
             lc.Delete(StorageTable);
         }
 
@@ -218,6 +246,7 @@ namespace Storage
             {
                 string folderPath = saveFD.FileName.ToString() + ".txt";
                 File.WriteAllText(folderPath, load);
+                MessageBox.Show($"Інвентарна відомість товарів завантажена в файл за шляхом:\n\n {folderPath};");
             }
         }
 
@@ -232,6 +261,7 @@ namespace Storage
                     string json = File.ReadAllText(folderPath);
                     var lc = new Logic();
                     lc.FillDataGridView(StorageTable, json);
+                    MessageBox.Show($"База товарів завантажена з файлу за шляхом:\n\n {folderPath};");
                 }
             }    
         }
@@ -344,6 +374,7 @@ namespace Storage
             {
                 string folderPath = saveFD.FileName.ToString() + ".txt";
                 File.WriteAllText(folderPath, str);
+                MessageBox.Show($"База товарів збережена в файл за шляхом:\n\n {folderPath};");
                 StorageTable.Rows.Clear();
             }
         }
