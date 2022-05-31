@@ -233,19 +233,19 @@ namespace Storage
                     return;
                 }
             }
+
             var inventory = new Logic();
-            string load = "Інвентарна відомість:\n\n";
             string inventoryText = inventory.SetInventoryText(StorageTable);
+
             if (inventoryText == "")
             {
                 MessageBox.Show("Таблиця пуста! Додайте дані!");
                 return;
             }
-            load += inventoryText;
             if (saveFD.ShowDialog() == DialogResult.OK)
             {
                 string folderPath = saveFD.FileName.ToString() + ".txt";
-                File.WriteAllText(folderPath, load);
+                File.WriteAllText(folderPath, inventoryText);
                 MessageBox.Show($"Інвентарна відомість товарів завантажена в файл за шляхом:\n\n {folderPath};");
             }
         }
@@ -395,16 +395,14 @@ namespace Storage
 
         private void ChangeButton_Click(object sender, EventArgs e)
         {
-            if (int.TryParse(EnteredProductCost.Text, out int Cost) == false)
+            if (int.TryParse(EnteredProductCost.Text, out _) == false)
             {
-                EnteredProductCost.Clear();
                 MessageBox.Show("Введіть коректне значення ціни");
                 return;
             }
 
-            if (int.TryParse(EnteredProductCount.Text, out int Count) == false)
+            if (int.TryParse(EnteredProductCount.Text, out _) == false)
             {
-                EnteredProductCount.Clear();
                 MessageBox.Show("Введіть коректне значення кількості");
                 return;
             }
@@ -415,19 +413,18 @@ namespace Storage
             {
                 if (MeasuresBox.Text == a.ToString())
                 {
-                    aP.Measure = MeasuresBox.Text;
+                    aP.Measure = "#";
                     break;
                 }
                 else
                 {
-                    aP.Measure = "No";
+                    aP.Measure = "Error_12345";
                 }
             }
 
-            if (aP.Measure == "No")
+            if (aP.Measure == "Error_12345")
             {
                 MessageBox.Show("Виберіть коректне значення од. вим.");
-                MeasuresBox.ResetText();
             }
 
             bool isOk = false;
@@ -445,7 +442,6 @@ namespace Storage
                                 if (c.ToString() == YearsBox.Text)
                                 {
                                     isOk = true;
-                                    aP.LastDateDelivery = DayBox.Text + "." + MonthsBox.Text + "." + YearsBox.Text;
                                     break;
                                 }
                             }
@@ -457,25 +453,15 @@ namespace Storage
             if (isOk == false)
             {
                 MessageBox.Show("Виберіть коректне значення дати");
-                DayBox.ResetText();
-                MonthsBox.ResetText();
-                YearsBox.ResetText();
                 return;
             }
 
-            if (aP.Measure != "No" && isOk == true)
+            if (aP.Measure != "Error_12345" && isOk == true)
             {
                 var lc = new Logic();
                 lc.EditRowParams(StorageTable, EnteredProductLabel, MeasuresBox,
                     EnteredProductCost, EnteredProductCount, DayBox, MonthsBox, YearsBox, textBox1);
             }
         }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        
     }
 }

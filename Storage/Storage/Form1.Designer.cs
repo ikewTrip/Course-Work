@@ -43,7 +43,7 @@
             this.EnteredProductCost = new System.Windows.Forms.TextBox();
             this.EnteredProductCount = new System.Windows.Forms.TextBox();
             this.AcceptedArrival = new System.Windows.Forms.Button();
-            this.DeniedArrival = new System.Windows.Forms.Button();
+            this.ClearButton = new System.Windows.Forms.Button();
             this.AcceptedUnloading = new System.Windows.Forms.Button();
             this.UploadInventory = new System.Windows.Forms.Button();
             this.DayBox = new System.Windows.Forms.ComboBox();
@@ -72,10 +72,11 @@
             this.ProductCount,
             this.ProductLastDateDelivery});
             this.StorageTable.Location = new System.Drawing.Point(0, 0);
+            this.StorageTable.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.StorageTable.Name = "StorageTable";
             this.StorageTable.ReadOnly = true;
             this.StorageTable.RowTemplate.Height = 25;
-            this.StorageTable.Size = new System.Drawing.Size(673, 385);
+            this.StorageTable.Size = new System.Drawing.Size(672, 385);
             this.StorageTable.TabIndex = 0;
             this.StorageTable.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.StorageTable_CellContentClick);
             // 
@@ -84,7 +85,7 @@
             this.ProductLabel.HeaderText = "Найменування товару";
             this.ProductLabel.Name = "ProductLabel";
             this.ProductLabel.ReadOnly = true;
-            this.ProductLabel.Width = 290;
+            this.ProductLabel.Width = 289;
             // 
             // ProductMeasure
             // 
@@ -118,7 +119,8 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 406);
+            this.label2.Location = new System.Drawing.Point(14, 405);
+            this.label2.Margin = new System.Windows.Forms.Padding(0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(39, 15);
             this.label2.TabIndex = 2;
@@ -127,7 +129,8 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 434);
+            this.label3.Location = new System.Drawing.Point(14, 435);
+            this.label3.Margin = new System.Windows.Forms.Padding(0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(53, 15);
             this.label3.TabIndex = 3;
@@ -136,7 +139,8 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 463);
+            this.label4.Location = new System.Drawing.Point(14, 465);
+            this.label4.Margin = new System.Windows.Forms.Padding(0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(65, 15);
             this.label4.TabIndex = 4;
@@ -145,7 +149,8 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 492);
+            this.label5.Location = new System.Drawing.Point(14, 490);
+            this.label5.Margin = new System.Windows.Forms.Padding(0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(56, 15);
             this.label5.TabIndex = 5;
@@ -154,7 +159,8 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(12, 523);
+            this.label6.Location = new System.Drawing.Point(14, 525);
+            this.label6.Margin = new System.Windows.Forms.Padding(0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(89, 15);
             this.label6.TabIndex = 6;
@@ -162,50 +168,56 @@
             // 
             // EnteredProductLabel
             // 
-            this.EnteredProductLabel.Location = new System.Drawing.Point(113, 403);
+            this.EnteredProductLabel.Location = new System.Drawing.Point(112, 402);
+            this.EnteredProductLabel.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.EnteredProductLabel.Name = "EnteredProductLabel";
-            this.EnteredProductLabel.Size = new System.Drawing.Size(100, 23);
+            this.EnteredProductLabel.Size = new System.Drawing.Size(102, 23);
             this.EnteredProductLabel.TabIndex = 7;
             // 
             // EnteredProductCost
             // 
-            this.EnteredProductCost.Location = new System.Drawing.Point(113, 460);
+            this.EnteredProductCost.Location = new System.Drawing.Point(112, 460);
+            this.EnteredProductCost.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.EnteredProductCost.Name = "EnteredProductCost";
-            this.EnteredProductCost.Size = new System.Drawing.Size(100, 23);
+            this.EnteredProductCost.Size = new System.Drawing.Size(102, 23);
             this.EnteredProductCost.TabIndex = 9;
             // 
             // EnteredProductCount
             // 
-            this.EnteredProductCount.Location = new System.Drawing.Point(113, 489);
+            this.EnteredProductCount.Location = new System.Drawing.Point(112, 490);
+            this.EnteredProductCount.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.EnteredProductCount.Name = "EnteredProductCount";
-            this.EnteredProductCount.Size = new System.Drawing.Size(100, 23);
+            this.EnteredProductCount.Size = new System.Drawing.Size(102, 23);
             this.EnteredProductCount.TabIndex = 10;
             // 
             // AcceptedArrival
             // 
-            this.AcceptedArrival.Location = new System.Drawing.Point(258, 430);
+            this.AcceptedArrival.Location = new System.Drawing.Point(259, 430);
+            this.AcceptedArrival.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.AcceptedArrival.Name = "AcceptedArrival";
-            this.AcceptedArrival.Size = new System.Drawing.Size(163, 23);
+            this.AcceptedArrival.Size = new System.Drawing.Size(161, 25);
             this.AcceptedArrival.TabIndex = 12;
             this.AcceptedArrival.Text = "Додати товар";
             this.AcceptedArrival.UseVisualStyleBackColor = true;
             this.AcceptedArrival.Click += new System.EventHandler(this.AcceptedArrival_Click);
             // 
-            // DeniedArrival
+            // ClearButton
             // 
-            this.DeniedArrival.Location = new System.Drawing.Point(353, 521);
-            this.DeniedArrival.Name = "DeniedArrival";
-            this.DeniedArrival.Size = new System.Drawing.Size(68, 23);
-            this.DeniedArrival.TabIndex = 14;
-            this.DeniedArrival.Text = "Очистити";
-            this.DeniedArrival.UseVisualStyleBackColor = true;
-            this.DeniedArrival.Click += new System.EventHandler(this.DeniedArrival_Click);
+            this.ClearButton.Location = new System.Drawing.Point(350, 520);
+            this.ClearButton.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            this.ClearButton.Name = "ClearButton";
+            this.ClearButton.Size = new System.Drawing.Size(70, 25);
+            this.ClearButton.TabIndex = 14;
+            this.ClearButton.Text = "Очистити";
+            this.ClearButton.UseVisualStyleBackColor = true;
+            this.ClearButton.Click += new System.EventHandler(this.DeniedArrival_Click);
             // 
             // AcceptedUnloading
             // 
-            this.AcceptedUnloading.Location = new System.Drawing.Point(258, 459);
+            this.AcceptedUnloading.Location = new System.Drawing.Point(259, 460);
+            this.AcceptedUnloading.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.AcceptedUnloading.Name = "AcceptedUnloading";
-            this.AcceptedUnloading.Size = new System.Drawing.Size(163, 23);
+            this.AcceptedUnloading.Size = new System.Drawing.Size(161, 25);
             this.AcceptedUnloading.TabIndex = 16;
             this.AcceptedUnloading.Text = "Відгрузити товар";
             this.AcceptedUnloading.UseVisualStyleBackColor = true;
@@ -213,9 +225,10 @@
             // 
             // UploadInventory
             // 
-            this.UploadInventory.Location = new System.Drawing.Point(467, 402);
+            this.UploadInventory.Location = new System.Drawing.Point(469, 400);
+            this.UploadInventory.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.UploadInventory.Name = "UploadInventory";
-            this.UploadInventory.Size = new System.Drawing.Size(161, 51);
+            this.UploadInventory.Size = new System.Drawing.Size(161, 55);
             this.UploadInventory.TabIndex = 19;
             this.UploadInventory.Text = "Завантажити інвентарну відомість";
             this.UploadInventory.UseVisualStyleBackColor = true;
@@ -257,7 +270,8 @@
             "29",
             "30",
             "31"});
-            this.DayBox.Location = new System.Drawing.Point(113, 520);
+            this.DayBox.Location = new System.Drawing.Point(112, 520);
+            this.DayBox.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.DayBox.Name = "DayBox";
             this.DayBox.Size = new System.Drawing.Size(39, 23);
             this.DayBox.TabIndex = 20;
@@ -279,9 +293,10 @@
             "10",
             "11",
             "12"});
-            this.MonthsBox.Location = new System.Drawing.Point(158, 520);
+            this.MonthsBox.Location = new System.Drawing.Point(160, 520);
+            this.MonthsBox.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.MonthsBox.Name = "MonthsBox";
-            this.MonthsBox.Size = new System.Drawing.Size(40, 23);
+            this.MonthsBox.Size = new System.Drawing.Size(39, 23);
             this.MonthsBox.TabIndex = 21;
             // 
             // YearsBox
@@ -320,9 +335,10 @@
             "2020",
             "2021",
             "2022"});
-            this.YearsBox.Location = new System.Drawing.Point(204, 521);
+            this.YearsBox.Location = new System.Drawing.Point(208, 520);
+            this.YearsBox.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.YearsBox.Name = "YearsBox";
-            this.YearsBox.Size = new System.Drawing.Size(56, 23);
+            this.YearsBox.Size = new System.Drawing.Size(53, 23);
             this.YearsBox.TabIndex = 22;
             // 
             // MeasuresBox
@@ -342,16 +358,18 @@
             "Дециметр",
             "Міліметр",
             "Мікрометр"});
-            this.MeasuresBox.Location = new System.Drawing.Point(113, 431);
+            this.MeasuresBox.Location = new System.Drawing.Point(112, 430);
+            this.MeasuresBox.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.MeasuresBox.Name = "MeasuresBox";
-            this.MeasuresBox.Size = new System.Drawing.Size(100, 23);
+            this.MeasuresBox.Size = new System.Drawing.Size(102, 23);
             this.MeasuresBox.TabIndex = 23;
             // 
             // LoadFile
             // 
-            this.LoadFile.Location = new System.Drawing.Point(467, 459);
+            this.LoadFile.Location = new System.Drawing.Point(469, 460);
+            this.LoadFile.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.LoadFile.Name = "LoadFile";
-            this.LoadFile.Size = new System.Drawing.Size(161, 23);
+            this.LoadFile.Size = new System.Drawing.Size(161, 25);
             this.LoadFile.TabIndex = 24;
             this.LoadFile.Text = "Завантажити базу товарів ";
             this.LoadFile.UseVisualStyleBackColor = true;
@@ -359,9 +377,10 @@
             // 
             // SaveFile
             // 
-            this.SaveFile.Location = new System.Drawing.Point(467, 520);
+            this.SaveFile.Location = new System.Drawing.Point(469, 520);
+            this.SaveFile.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.SaveFile.Name = "SaveFile";
-            this.SaveFile.Size = new System.Drawing.Size(161, 23);
+            this.SaveFile.Size = new System.Drawing.Size(161, 25);
             this.SaveFile.TabIndex = 27;
             this.SaveFile.Text = "Зберегти базу товарів";
             this.SaveFile.UseVisualStyleBackColor = true;
@@ -373,9 +392,10 @@
             // 
             // SearchButton
             // 
-            this.SearchButton.Location = new System.Drawing.Point(353, 403);
+            this.SearchButton.Location = new System.Drawing.Point(350, 400);
+            this.SearchButton.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.SearchButton.Name = "SearchButton";
-            this.SearchButton.Size = new System.Drawing.Size(68, 23);
+            this.SearchButton.Size = new System.Drawing.Size(70, 25);
             this.SearchButton.TabIndex = 28;
             this.SearchButton.Text = "Пошук";
             this.SearchButton.UseVisualStyleBackColor = true;
@@ -383,16 +403,18 @@
             // 
             // SearchBox
             // 
-            this.SearchBox.Location = new System.Drawing.Point(258, 403);
+            this.SearchBox.Location = new System.Drawing.Point(259, 402);
+            this.SearchBox.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.SearchBox.Name = "SearchBox";
-            this.SearchBox.Size = new System.Drawing.Size(89, 23);
+            this.SearchBox.Size = new System.Drawing.Size(88, 23);
             this.SearchBox.TabIndex = 29;
             // 
             // ChangeButton
             // 
-            this.ChangeButton.Location = new System.Drawing.Point(279, 521);
+            this.ChangeButton.Location = new System.Drawing.Point(280, 520);
+            this.ChangeButton.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.ChangeButton.Name = "ChangeButton";
-            this.ChangeButton.Size = new System.Drawing.Size(68, 23);
+            this.ChangeButton.Size = new System.Drawing.Size(70, 25);
             this.ChangeButton.TabIndex = 30;
             this.ChangeButton.Text = "Змінити";
             this.ChangeButton.UseVisualStyleBackColor = true;
@@ -400,20 +422,20 @@
             // 
             // textBox1
             // 
-            this.textBox1.Font = new System.Drawing.Font("Segoe UI", 1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox1.Location = new System.Drawing.Point(648, 558);
+            this.textBox1.Font = new System.Drawing.Font("Segoe UI", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBox1.Location = new System.Drawing.Point(750, 496);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(0);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(25, 10);
+            this.textBox1.Size = new System.Drawing.Size(11, 9);
             this.textBox1.TabIndex = 31;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(673, 569);
+            this.ClientSize = new System.Drawing.Size(673, 570);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.ChangeButton);
             this.Controls.Add(this.SearchBox);
@@ -426,7 +448,7 @@
             this.Controls.Add(this.DayBox);
             this.Controls.Add(this.UploadInventory);
             this.Controls.Add(this.AcceptedUnloading);
-            this.Controls.Add(this.DeniedArrival);
+            this.Controls.Add(this.ClearButton);
             this.Controls.Add(this.AcceptedArrival);
             this.Controls.Add(this.EnteredProductCount);
             this.Controls.Add(this.EnteredProductCost);
@@ -437,6 +459,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.StorageTable);
+            this.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.Name = "Form1";
             this.Text = "Склад";
             ((System.ComponentModel.ISupportInitialize)(this.StorageTable)).EndInit();
@@ -457,7 +480,7 @@
         private TextBox EnteredProductCost;
         private TextBox EnteredProductCount;
         private Button AcceptedArrival;
-        private Button DeniedArrival;
+        private Button ClearButton;
         private Button AcceptedUnloading;
         private Button UploadInventory;
         private ComboBox DayBox;
@@ -470,12 +493,12 @@
         private SaveFileDialog saveFD;
         private Button SearchButton;
         private TextBox SearchBox;
+        private Button ChangeButton;
+        private TextBox textBox1;
         private DataGridViewTextBoxColumn ProductLabel;
         private DataGridViewTextBoxColumn ProductMeasure;
         private DataGridViewTextBoxColumn ProductCost;
         private DataGridViewTextBoxColumn ProductCount;
         private DataGridViewTextBoxColumn ProductLastDateDelivery;
-        private Button ChangeButton;
-        private TextBox textBox1;
     }
 }

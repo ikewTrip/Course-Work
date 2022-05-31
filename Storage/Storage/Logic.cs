@@ -105,6 +105,10 @@ namespace Storage
             {
                 return "";
             }
+
+            string load = "Інвентарна відомість:\n\n";
+
+            totalInventoryText += load;
             for (int i = 0; i < tableData.Rows.Count; i++)
             {
                 string start = $"Продукт №{i + 1}: \n";
