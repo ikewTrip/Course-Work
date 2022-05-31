@@ -154,5 +154,32 @@ namespace Storage
 
             return result;
         }
+
+        public void Searcher(DataGridView table, TextBox src)
+        {
+            int search = table.CurrentCell.RowIndex;
+
+            for (int row = 0; row < table.RowCount; row++)
+            {
+                if (search < table.RowCount - 1)
+                {
+                    search++;
+                }
+                else
+                {
+                    search = 0;
+                }
+                for (int col = 0; col < 5; col++)
+                {
+                    if (table[col, search].FormattedValue.ToString(). Contains(src.Text.Trim()))
+                    {
+                        table.CurrentCell = table[0, search];
+                        return;
+                    }
+                }
+            }
+
+            MessageBox.Show("Збігів не виявлено!");
+        }
     }
 }

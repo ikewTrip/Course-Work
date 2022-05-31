@@ -378,5 +378,11 @@ namespace Storage
                 StorageTable.Rows.Clear();
             }
         }
+
+        private void SearchButton_Click(object sender, EventArgs e)
+        {
+            var lc = new Logic();
+            lc.Searcher(StorageTable, SearchBox);
+        }
     }
 }
