@@ -56,6 +56,8 @@
             this.saveFD = new System.Windows.Forms.SaveFileDialog();
             this.SearchButton = new System.Windows.Forms.Button();
             this.SearchBox = new System.Windows.Forms.TextBox();
+            this.ChangeButton = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.StorageTable)).BeginInit();
             this.SuspendLayout();
             // 
@@ -71,20 +73,24 @@
             this.ProductLastDateDelivery});
             this.StorageTable.Location = new System.Drawing.Point(0, 0);
             this.StorageTable.Name = "StorageTable";
+            this.StorageTable.ReadOnly = true;
             this.StorageTable.RowTemplate.Height = 25;
             this.StorageTable.Size = new System.Drawing.Size(673, 385);
             this.StorageTable.TabIndex = 0;
+            this.StorageTable.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.StorageTable_CellContentClick);
             // 
             // ProductLabel
             // 
             this.ProductLabel.HeaderText = "Найменування товару";
             this.ProductLabel.Name = "ProductLabel";
+            this.ProductLabel.ReadOnly = true;
             this.ProductLabel.Width = 290;
             // 
             // ProductMeasure
             // 
             this.ProductMeasure.HeaderText = "Одиниця виміру товару ";
             this.ProductMeasure.Name = "ProductMeasure";
+            this.ProductMeasure.ReadOnly = true;
             this.ProductMeasure.Width = 110;
             // 
             // ProductCost
@@ -92,18 +98,21 @@
             this.ProductCost.FillWeight = 80F;
             this.ProductCost.HeaderText = "Ціна одиниці";
             this.ProductCost.Name = "ProductCost";
+            this.ProductCost.ReadOnly = true;
             this.ProductCost.Width = 75;
             // 
             // ProductCount
             // 
             this.ProductCount.HeaderText = "Кількість";
             this.ProductCount.Name = "ProductCount";
+            this.ProductCount.ReadOnly = true;
             this.ProductCount.Width = 75;
             // 
             // ProductLastDateDelivery
             // 
             this.ProductLastDateDelivery.HeaderText = "Дата останнього завезення ";
             this.ProductLastDateDelivery.Name = "ProductLastDateDelivery";
+            this.ProductLastDateDelivery.ReadOnly = true;
             this.ProductLastDateDelivery.Width = 80;
             // 
             // label2
@@ -184,7 +193,7 @@
             // 
             // DeniedArrival
             // 
-            this.DeniedArrival.Location = new System.Drawing.Point(353, 520);
+            this.DeniedArrival.Location = new System.Drawing.Point(353, 521);
             this.DeniedArrival.Name = "DeniedArrival";
             this.DeniedArrival.Size = new System.Drawing.Size(68, 23);
             this.DeniedArrival.TabIndex = 14;
@@ -250,7 +259,7 @@
             "31"});
             this.DayBox.Location = new System.Drawing.Point(113, 520);
             this.DayBox.Name = "DayBox";
-            this.DayBox.Size = new System.Drawing.Size(47, 23);
+            this.DayBox.Size = new System.Drawing.Size(39, 23);
             this.DayBox.TabIndex = 20;
             // 
             // MonthsBox
@@ -270,9 +279,9 @@
             "10",
             "11",
             "12"});
-            this.MonthsBox.Location = new System.Drawing.Point(166, 520);
+            this.MonthsBox.Location = new System.Drawing.Point(158, 520);
             this.MonthsBox.Name = "MonthsBox";
-            this.MonthsBox.Size = new System.Drawing.Size(72, 23);
+            this.MonthsBox.Size = new System.Drawing.Size(40, 23);
             this.MonthsBox.TabIndex = 21;
             // 
             // YearsBox
@@ -311,9 +320,9 @@
             "2020",
             "2021",
             "2022"});
-            this.YearsBox.Location = new System.Drawing.Point(244, 520);
+            this.YearsBox.Location = new System.Drawing.Point(204, 521);
             this.YearsBox.Name = "YearsBox";
-            this.YearsBox.Size = new System.Drawing.Size(63, 23);
+            this.YearsBox.Size = new System.Drawing.Size(56, 23);
             this.YearsBox.TabIndex = 22;
             // 
             // MeasuresBox
@@ -379,12 +388,34 @@
             this.SearchBox.Size = new System.Drawing.Size(89, 23);
             this.SearchBox.TabIndex = 29;
             // 
+            // ChangeButton
+            // 
+            this.ChangeButton.Location = new System.Drawing.Point(279, 521);
+            this.ChangeButton.Name = "ChangeButton";
+            this.ChangeButton.Size = new System.Drawing.Size(68, 23);
+            this.ChangeButton.TabIndex = 30;
+            this.ChangeButton.Text = "Змінити";
+            this.ChangeButton.UseVisualStyleBackColor = true;
+            this.ChangeButton.Click += new System.EventHandler(this.ChangeButton_Click);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Font = new System.Drawing.Font("Segoe UI", 1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBox1.Location = new System.Drawing.Point(648, 558);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(25, 10);
+            this.textBox1.TabIndex = 31;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(673, 558);
+            this.ClientSize = new System.Drawing.Size(673, 569);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.ChangeButton);
             this.Controls.Add(this.SearchBox);
             this.Controls.Add(this.SearchButton);
             this.Controls.Add(this.SaveFile);
@@ -444,5 +475,7 @@
         private DataGridViewTextBoxColumn ProductCost;
         private DataGridViewTextBoxColumn ProductCount;
         private DataGridViewTextBoxColumn ProductLastDateDelivery;
+        private Button ChangeButton;
+        private TextBox textBox1;
     }
 }

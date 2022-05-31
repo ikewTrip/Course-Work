@@ -181,5 +181,37 @@ namespace Storage
 
             MessageBox.Show("Збігів не виявлено!");
         }
+
+        public int SelectEditingRow(DataGridView table, TextBox name, ComboBox measure,
+            TextBox cost, TextBox count, ComboBox day, ComboBox month, ComboBox year)
+        {
+            int selectedRowIndex = table.CurrentRow.Index; 
+
+            name.Text = table.CurrentRow.Cells[0].Value.ToString();
+            measure.Text = table.CurrentRow.Cells[1].Value.ToString();
+            cost.Text = table.CurrentRow.Cells[2].Value.ToString();
+            count.Text = table.CurrentRow.Cells[3].Value.ToString();
+
+            string Date = table.CurrentRow.Cells[4].Value.ToString();
+            string[] partsOfDate = Date.Split(".");
+
+            day.Text = partsOfDate[0];
+            month.Text = partsOfDate[1];
+            year.Text = partsOfDate[2];
+
+            return selectedRowIndex;
+        }
+
+        public void EditRowParams(DataGridView table, TextBox name, ComboBox measure,
+            TextBox cost, TextBox count, ComboBox day, ComboBox month, ComboBox year, TextBox indexer)
+        {
+            int index = int.Parse(indexer.Text);
+
+            table.Rows[index].Cells[0].Value = name.Text;
+            table.Rows[index].Cells[1].Value = measure.Text;
+            table.Rows[index].Cells[2].Value = cost.Text;
+            table.Rows[index].Cells[3].Value = count.Text;
+            table.Rows[index].Cells[4].Value = day.Text + "." + month.Text + "." + year.Text;
+        }
     }
 }

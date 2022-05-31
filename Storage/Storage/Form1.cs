@@ -384,5 +384,98 @@ namespace Storage
             var lc = new Logic();
             lc.Searcher(StorageTable, SearchBox);
         }
+
+        private void StorageTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var lc = new Logic();
+            textBox1.Text = lc.SelectEditingRow(StorageTable, EnteredProductLabel, 
+                MeasuresBox, EnteredProductCost, EnteredProductCount, DayBox, MonthsBox, YearsBox).ToString();
+
+        }
+
+        private void ChangeButton_Click(object sender, EventArgs e)
+        {
+            if (int.TryParse(EnteredProductCost.Text, out int Cost) == false)
+            {
+                EnteredProductCost.Clear();
+                MessageBox.Show("¬вед≥ть коректне значенн€ ц≥ни");
+                return;
+            }
+
+            if (int.TryParse(EnteredProductCount.Text, out int Count) == false)
+            {
+                EnteredProductCount.Clear();
+                MessageBox.Show("¬вед≥ть коректне значенн€ к≥лькост≥");
+                return;
+            }
+
+            var aP = new Product();
+
+            foreach (var a in MeasuresBox.Items)
+            {
+                if (MeasuresBox.Text == a.ToString())
+                {
+                    aP.Measure = MeasuresBox.Text;
+                    break;
+                }
+                else
+                {
+                    aP.Measure = "No";
+                }
+            }
+
+            if (aP.Measure == "No")
+            {
+                MessageBox.Show("¬ибер≥ть коректне значенн€ од. вим.");
+                MeasuresBox.ResetText();
+            }
+
+            bool isOk = false;
+
+            foreach (var a in DayBox.Items)
+            {
+                if (a.ToString() == DayBox.Text)
+                {
+                    foreach (var b in MonthsBox.Items)
+                    {
+                        if (b.ToString() == MonthsBox.Text)
+                        {
+                            foreach (var c in YearsBox.Items)
+                            {
+                                if (c.ToString() == YearsBox.Text)
+                                {
+                                    isOk = true;
+                                    aP.LastDateDelivery = DayBox.Text + "." + MonthsBox.Text + "." + YearsBox.Text;
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            if (isOk == false)
+            {
+                MessageBox.Show("¬ибер≥ть коректне значенн€ дати");
+                DayBox.ResetText();
+                MonthsBox.ResetText();
+                YearsBox.ResetText();
+                return;
+            }
+
+            if (aP.Measure != "No" && isOk == true)
+            {
+                var lc = new Logic();
+                lc.EditRowParams(StorageTable, EnteredProductLabel, MeasuresBox,
+                    EnteredProductCost, EnteredProductCount, DayBox, MonthsBox, YearsBox, textBox1);
+            }
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        
     }
 }
