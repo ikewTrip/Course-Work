@@ -105,27 +105,123 @@ namespace Storage
 
         private void AcceptedUnloading_Click(object sender, EventArgs e)
         {
-            if(StorageTable.SelectedRows.Count == 0)
+            if (int.TryParse(EnteredProductCost.Text, out _) == false)
             {
-                MessageBox.Show("Товари для видалення за таблиці не виділені!");
+                MessageBox.Show("Введіть коректне значення ціни");
                 return;
             }
 
-            var lc = new Logic();
-
-            if (saveFD.ShowDialog() == DialogResult.OK)
+            if (int.TryParse(EnteredProductCount.Text, out int Count) == false)
             {
-                string folderPath = saveFD.FileName.ToString() + ".txt";
-                string str = lc.SetUnloadingText(StorageTable);
-                File.WriteAllText(folderPath, str);
-                MessageBox.Show($"Видаткова накладна сформована і записана в файл за шляхом:\n\n {folderPath};");
-            }
-            else
-            {
+                MessageBox.Show("Введіть коректне значення кількості");
                 return;
             }
-            
-            lc.Delete(StorageTable);
+
+            var aP = new Product();
+
+            foreach (var a in MeasuresBox.Items)
+            {
+                if (MeasuresBox.Text == a.ToString())
+                {
+                    aP.Measure = "#";
+                    break;
+                }
+                else
+                {
+                    aP.Measure = "Error_12345";
+                }
+            }
+
+            if (aP.Measure == "Error_12345")
+            {
+                MessageBox.Show("Виберіть коректне значення од. вим.");
+            }
+
+            bool isOk = false;
+
+            foreach (var a in DayBox.Items)
+            {
+                if (a.ToString() == DayBox.Text)
+                {
+                    foreach (var b in MonthsBox.Items)
+                    {
+                        if (b.ToString() == MonthsBox.Text)
+                        {
+                            foreach (var c in YearsBox.Items)
+                            {
+                                if (c.ToString() == YearsBox.Text)
+                                {
+                                    isOk = true;
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            if (isOk == false)
+            {
+                MessageBox.Show("Виберіть коректне значення дати");
+                return;
+            }
+
+            if (aP.Measure != "Error_12345" && isOk == true)
+            {
+                if (MessageBox.Show($"Відгрузити {EnteredProductLabel.Text} у кількості " +
+                $"{EnteredProductCount.Text} з ціною {EnteredProductCost.Text} за одиницю?", "Увага!", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    int rowIndex = int.Parse(textBox1.Text);
+                    int currentCount = int.Parse(StorageTable.Rows[rowIndex].Cells[3].Value.ToString());
+
+                    if (Count <= currentCount)
+                    {
+                        StorageTable.Rows[rowIndex].Cells[3].Value = currentCount - Count;
+                        EnteredProductCount.Text = StorageTable.Rows[rowIndex].Cells[3].Value.ToString();
+
+                        if (StorageTable.Rows[rowIndex].Cells[3].Value.ToString() == "0")
+                        {
+                            StorageTable.Rows.RemoveAt(rowIndex);
+                            EnteredProductLabel.Clear();
+                            MeasuresBox.ResetText();
+                            EnteredProductCost.Clear();
+                            EnteredProductCount.Clear();
+                            DayBox.ResetText();
+                            MonthsBox.ResetText();
+                            YearsBox.ResetText();
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Неможливо вигрузити більше товару ніж є на складі!");
+                        return;
+                    }
+                }
+                else
+                {
+                    return;
+                }
+            }
+            //var lc = new Logic();
+
+            //if (saveFD.ShowDialog() == DialogResult.OK)
+            //{
+            //    string folderPath = saveFD.FileName.ToString() + ".txt";
+            //    string str = lc.SetUnloadingText(StorageTable);
+            //    File.WriteAllText(folderPath, str);
+            //    MessageBox.Show($"Видаткова накладна сформована і записана в файл за шляхом:\n\n {folderPath};");
+            //}
+            //else
+            //{
+            //    return;
+            //}
+
+            //lc.Delete(StorageTable);
+            //{
+            //    string folderPath = saveFD.FileName.ToString() + ".txt";
+            //    string str = lc.SetUnloadingText(StorageTable);
+            //    File.WriteAllText(folderPath, str);
+            //    MessageBox.Show($"Видаткова накладна сформована і записана в файл за шляхом:\n\n {folderPath};");
         }
 
         private void DeniedArrival_Click(object sender, EventArgs e)
@@ -462,6 +558,16 @@ namespace Storage
                 lc.EditRowParams(StorageTable, EnteredProductLabel, MeasuresBox,
                     EnteredProductCost, EnteredProductCount, DayBox, MonthsBox, YearsBox, textBox1);
             }
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

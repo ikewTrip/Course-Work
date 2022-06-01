@@ -58,6 +58,9 @@
             this.SearchBox = new System.Windows.Forms.TextBox();
             this.ChangeButton = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.GetUnloadButton = new System.Windows.Forms.Button();
+            this.GetLoadButton = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.StorageTable)).BeginInit();
             this.SuspendLayout();
             // 
@@ -76,7 +79,7 @@
             this.StorageTable.Name = "StorageTable";
             this.StorageTable.ReadOnly = true;
             this.StorageTable.RowTemplate.Height = 25;
-            this.StorageTable.Size = new System.Drawing.Size(672, 385);
+            this.StorageTable.Size = new System.Drawing.Size(653, 412);
             this.StorageTable.TabIndex = 0;
             this.StorageTable.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.StorageTable_CellContentClick);
             // 
@@ -85,7 +88,7 @@
             this.ProductLabel.HeaderText = "Найменування товару";
             this.ProductLabel.Name = "ProductLabel";
             this.ProductLabel.ReadOnly = true;
-            this.ProductLabel.Width = 289;
+            this.ProductLabel.Width = 270;
             // 
             // ProductMeasure
             // 
@@ -119,7 +122,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(14, 405);
+            this.label2.Location = new System.Drawing.Point(14, 425);
             this.label2.Margin = new System.Windows.Forms.Padding(0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(39, 15);
@@ -129,7 +132,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(14, 435);
+            this.label3.Location = new System.Drawing.Point(14, 455);
             this.label3.Margin = new System.Windows.Forms.Padding(0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(53, 15);
@@ -139,7 +142,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(14, 465);
+            this.label4.Location = new System.Drawing.Point(250, 427);
             this.label4.Margin = new System.Windows.Forms.Padding(0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(65, 15);
@@ -149,7 +152,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(14, 490);
+            this.label5.Location = new System.Drawing.Point(250, 455);
             this.label5.Margin = new System.Windows.Forms.Padding(0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(56, 15);
@@ -159,16 +162,17 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(14, 525);
+            this.label6.Location = new System.Drawing.Point(14, 485);
             this.label6.Margin = new System.Windows.Forms.Padding(0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(89, 15);
             this.label6.TabIndex = 6;
             this.label6.Text = "Дата завезення";
+            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // EnteredProductLabel
             // 
-            this.EnteredProductLabel.Location = new System.Drawing.Point(112, 402);
+            this.EnteredProductLabel.Location = new System.Drawing.Point(112, 422);
             this.EnteredProductLabel.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.EnteredProductLabel.Name = "EnteredProductLabel";
             this.EnteredProductLabel.Size = new System.Drawing.Size(102, 23);
@@ -176,7 +180,7 @@
             // 
             // EnteredProductCost
             // 
-            this.EnteredProductCost.Location = new System.Drawing.Point(112, 460);
+            this.EnteredProductCost.Location = new System.Drawing.Point(331, 422);
             this.EnteredProductCost.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.EnteredProductCost.Name = "EnteredProductCost";
             this.EnteredProductCost.Size = new System.Drawing.Size(102, 23);
@@ -184,7 +188,7 @@
             // 
             // EnteredProductCount
             // 
-            this.EnteredProductCount.Location = new System.Drawing.Point(112, 490);
+            this.EnteredProductCount.Location = new System.Drawing.Point(331, 452);
             this.EnteredProductCount.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.EnteredProductCount.Name = "EnteredProductCount";
             this.EnteredProductCount.Size = new System.Drawing.Size(102, 23);
@@ -192,7 +196,7 @@
             // 
             // AcceptedArrival
             // 
-            this.AcceptedArrival.Location = new System.Drawing.Point(259, 430);
+            this.AcceptedArrival.Location = new System.Drawing.Point(469, 450);
             this.AcceptedArrival.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.AcceptedArrival.Name = "AcceptedArrival";
             this.AcceptedArrival.Size = new System.Drawing.Size(161, 25);
@@ -203,7 +207,7 @@
             // 
             // ClearButton
             // 
-            this.ClearButton.Location = new System.Drawing.Point(350, 520);
+            this.ClearButton.Location = new System.Drawing.Point(363, 480);
             this.ClearButton.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.ClearButton.Name = "ClearButton";
             this.ClearButton.Size = new System.Drawing.Size(70, 25);
@@ -214,7 +218,7 @@
             // 
             // AcceptedUnloading
             // 
-            this.AcceptedUnloading.Location = new System.Drawing.Point(259, 460);
+            this.AcceptedUnloading.Location = new System.Drawing.Point(469, 480);
             this.AcceptedUnloading.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.AcceptedUnloading.Name = "AcceptedUnloading";
             this.AcceptedUnloading.Size = new System.Drawing.Size(161, 25);
@@ -225,12 +229,12 @@
             // 
             // UploadInventory
             // 
-            this.UploadInventory.Location = new System.Drawing.Point(469, 400);
+            this.UploadInventory.Location = new System.Drawing.Point(258, 552);
             this.UploadInventory.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.UploadInventory.Name = "UploadInventory";
-            this.UploadInventory.Size = new System.Drawing.Size(161, 55);
+            this.UploadInventory.Size = new System.Drawing.Size(140, 23);
             this.UploadInventory.TabIndex = 19;
-            this.UploadInventory.Text = "Завантажити інвентарну відомість";
+            this.UploadInventory.Text = "Інвентарна відомість";
             this.UploadInventory.UseVisualStyleBackColor = true;
             this.UploadInventory.Click += new System.EventHandler(this.UploadInventory_Click);
             // 
@@ -270,7 +274,7 @@
             "29",
             "30",
             "31"});
-            this.DayBox.Location = new System.Drawing.Point(112, 520);
+            this.DayBox.Location = new System.Drawing.Point(112, 482);
             this.DayBox.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.DayBox.Name = "DayBox";
             this.DayBox.Size = new System.Drawing.Size(39, 23);
@@ -293,7 +297,7 @@
             "10",
             "11",
             "12"});
-            this.MonthsBox.Location = new System.Drawing.Point(160, 520);
+            this.MonthsBox.Location = new System.Drawing.Point(156, 482);
             this.MonthsBox.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.MonthsBox.Name = "MonthsBox";
             this.MonthsBox.Size = new System.Drawing.Size(39, 23);
@@ -335,7 +339,7 @@
             "2020",
             "2021",
             "2022"});
-            this.YearsBox.Location = new System.Drawing.Point(208, 520);
+            this.YearsBox.Location = new System.Drawing.Point(199, 482);
             this.YearsBox.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.YearsBox.Name = "YearsBox";
             this.YearsBox.Size = new System.Drawing.Size(53, 23);
@@ -358,7 +362,7 @@
             "Дециметр",
             "Міліметр",
             "Мікрометр"});
-            this.MeasuresBox.Location = new System.Drawing.Point(112, 430);
+            this.MeasuresBox.Location = new System.Drawing.Point(112, 452);
             this.MeasuresBox.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.MeasuresBox.Name = "MeasuresBox";
             this.MeasuresBox.Size = new System.Drawing.Size(102, 23);
@@ -366,21 +370,21 @@
             // 
             // LoadFile
             // 
-            this.LoadFile.Location = new System.Drawing.Point(469, 460);
+            this.LoadFile.Location = new System.Drawing.Point(112, 552);
             this.LoadFile.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.LoadFile.Name = "LoadFile";
-            this.LoadFile.Size = new System.Drawing.Size(161, 25);
+            this.LoadFile.Size = new System.Drawing.Size(140, 23);
             this.LoadFile.TabIndex = 24;
-            this.LoadFile.Text = "Завантажити базу товарів ";
+            this.LoadFile.Text = "База товарів ";
             this.LoadFile.UseVisualStyleBackColor = true;
             this.LoadFile.Click += new System.EventHandler(this.LoadFile_Click);
             // 
             // SaveFile
             // 
-            this.SaveFile.Location = new System.Drawing.Point(469, 520);
+            this.SaveFile.Location = new System.Drawing.Point(469, 521);
             this.SaveFile.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.SaveFile.Name = "SaveFile";
-            this.SaveFile.Size = new System.Drawing.Size(161, 25);
+            this.SaveFile.Size = new System.Drawing.Size(161, 54);
             this.SaveFile.TabIndex = 27;
             this.SaveFile.Text = "Зберегти базу товарів";
             this.SaveFile.UseVisualStyleBackColor = true;
@@ -392,10 +396,10 @@
             // 
             // SearchButton
             // 
-            this.SearchButton.Location = new System.Drawing.Point(350, 400);
+            this.SearchButton.Location = new System.Drawing.Point(568, 422);
             this.SearchButton.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.SearchButton.Name = "SearchButton";
-            this.SearchButton.Size = new System.Drawing.Size(70, 25);
+            this.SearchButton.Size = new System.Drawing.Size(62, 25);
             this.SearchButton.TabIndex = 28;
             this.SearchButton.Text = "Пошук";
             this.SearchButton.UseVisualStyleBackColor = true;
@@ -403,15 +407,15 @@
             // 
             // SearchBox
             // 
-            this.SearchBox.Location = new System.Drawing.Point(259, 402);
+            this.SearchBox.Location = new System.Drawing.Point(469, 422);
             this.SearchBox.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.SearchBox.Name = "SearchBox";
-            this.SearchBox.Size = new System.Drawing.Size(88, 23);
+            this.SearchBox.Size = new System.Drawing.Size(91, 23);
             this.SearchBox.TabIndex = 29;
             // 
             // ChangeButton
             // 
-            this.ChangeButton.Location = new System.Drawing.Point(280, 520);
+            this.ChangeButton.Location = new System.Drawing.Point(293, 480);
             this.ChangeButton.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.ChangeButton.Name = "ChangeButton";
             this.ChangeButton.Size = new System.Drawing.Size(70, 25);
@@ -430,12 +434,44 @@
             this.textBox1.Size = new System.Drawing.Size(11, 9);
             this.textBox1.TabIndex = 31;
             // 
+            // GetUnloadButton
+            // 
+            this.GetUnloadButton.Location = new System.Drawing.Point(258, 521);
+            this.GetUnloadButton.Name = "GetUnloadButton";
+            this.GetUnloadButton.Size = new System.Drawing.Size(140, 23);
+            this.GetUnloadButton.TabIndex = 32;
+            this.GetUnloadButton.Text = "Видаткова накладна";
+            this.GetUnloadButton.UseVisualStyleBackColor = true;
+            // 
+            // GetLoadButton
+            // 
+            this.GetLoadButton.Location = new System.Drawing.Point(112, 521);
+            this.GetLoadButton.Name = "GetLoadButton";
+            this.GetLoadButton.Size = new System.Drawing.Size(140, 23);
+            this.GetLoadButton.TabIndex = 33;
+            this.GetLoadButton.Text = "Прибуткова накладна";
+            this.GetLoadButton.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(14, 525);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(81, 15);
+            this.label1.TabIndex = 34;
+            this.label1.Text = "Завантажити:";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(673, 570);
+            this.ClientSize = new System.Drawing.Size(654, 585);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.GetLoadButton);
+            this.Controls.Add(this.GetUnloadButton);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.ChangeButton);
             this.Controls.Add(this.SearchBox);
@@ -495,6 +531,9 @@
         private TextBox SearchBox;
         private Button ChangeButton;
         private TextBox textBox1;
+        private Button GetUnloadButton;
+        private Button GetLoadButton;
+        private Label label1;
         private DataGridViewTextBoxColumn ProductLabel;
         private DataGridViewTextBoxColumn ProductMeasure;
         private DataGridViewTextBoxColumn ProductCost;
