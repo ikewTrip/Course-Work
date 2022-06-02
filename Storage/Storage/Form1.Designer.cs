@@ -519,6 +519,7 @@
             this.Name = "Form1";
             this.Text = "Склад";
             ((System.ComponentModel.ISupportInitialize)(this.StorageTable)).EndInit();
+            this.FormClosing += MainForm_Closing;
             this.ResumeLayout(false);
             this.PerformLayout();
 

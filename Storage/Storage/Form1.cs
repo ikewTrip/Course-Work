@@ -605,5 +605,37 @@ namespace Storage
                 LoadDataBox.Text = "";
             }
         } //(+)
+
+        private void MainForm_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            e.Cancel = true;
+
+            if (MessageBox.Show("Чи зберегли ви дані перед закриттям програми?", "Увага!", MessageBoxButtons.YesNo, 
+                MessageBoxIcon.Question) == DialogResult.No)
+            {
+                SaveFile_Click(sender, e);
+                if (MessageBox.Show("Закрити програму?", "Увага!", MessageBoxButtons.YesNo,
+                 MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    e.Cancel = false;
+                }
+                else
+                {
+                    return;
+                }
+            }
+            else
+            {
+                if (MessageBox.Show("Закрити програму?", "Увага!", MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    e.Cancel = false;
+                }
+                else
+                {
+                    return;
+                }
+            }
+        }
     }
 }
