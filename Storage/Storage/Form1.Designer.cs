@@ -61,6 +61,8 @@
             this.GetUnloadButton = new System.Windows.Forms.Button();
             this.GetLoadButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.UnloadDataBox = new System.Windows.Forms.TextBox();
+            this.LoadDataBox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.StorageTable)).BeginInit();
             this.SuspendLayout();
             // 
@@ -168,7 +170,6 @@
             this.label6.Size = new System.Drawing.Size(89, 15);
             this.label6.TabIndex = 6;
             this.label6.Text = "Дата завезення";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // EnteredProductLabel
             // 
@@ -426,12 +427,12 @@
             // 
             // textBox1
             // 
-            this.textBox1.Font = new System.Drawing.Font("Segoe UI", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox1.Location = new System.Drawing.Point(750, 496);
+            this.textBox1.Font = new System.Drawing.Font("Segoe UI", 1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBox1.Location = new System.Drawing.Point(1114, 9);
             this.textBox1.Margin = new System.Windows.Forms.Padding(0);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(11, 9);
+            this.textBox1.Size = new System.Drawing.Size(10, 10);
             this.textBox1.TabIndex = 31;
             // 
             // GetUnloadButton
@@ -442,6 +443,7 @@
             this.GetUnloadButton.TabIndex = 32;
             this.GetUnloadButton.Text = "Видаткова накладна";
             this.GetUnloadButton.UseVisualStyleBackColor = true;
+            this.GetUnloadButton.Click += new System.EventHandler(this.GetUnloadButton_Click);
             // 
             // GetLoadButton
             // 
@@ -451,6 +453,7 @@
             this.GetLoadButton.TabIndex = 33;
             this.GetLoadButton.Text = "Прибуткова накладна";
             this.GetLoadButton.UseVisualStyleBackColor = true;
+            this.GetLoadButton.Click += new System.EventHandler(this.GetLoadButton_Click);
             // 
             // label1
             // 
@@ -461,7 +464,22 @@
             this.label1.Size = new System.Drawing.Size(81, 15);
             this.label1.TabIndex = 34;
             this.label1.Text = "Завантажити:";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // UnloadDataBox
+            // 
+            this.UnloadDataBox.Font = new System.Drawing.Font("Segoe UI", 1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.UnloadDataBox.Location = new System.Drawing.Point(1114, 0);
+            this.UnloadDataBox.Name = "UnloadDataBox";
+            this.UnloadDataBox.Size = new System.Drawing.Size(10, 9);
+            this.UnloadDataBox.TabIndex = 35;
+            // 
+            // LoadDataBox
+            // 
+            this.LoadDataBox.Font = new System.Drawing.Font("Segoe UI", 1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.LoadDataBox.Location = new System.Drawing.Point(1114, 15);
+            this.LoadDataBox.Name = "LoadDataBox";
+            this.LoadDataBox.Size = new System.Drawing.Size(10, 9);
+            this.LoadDataBox.TabIndex = 36;
             // 
             // Form1
             // 
@@ -469,6 +487,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(654, 585);
+            this.Controls.Add(this.LoadDataBox);
+            this.Controls.Add(this.UnloadDataBox);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.GetLoadButton);
             this.Controls.Add(this.GetUnloadButton);
@@ -539,5 +559,7 @@
         private DataGridViewTextBoxColumn ProductCost;
         private DataGridViewTextBoxColumn ProductCount;
         private DataGridViewTextBoxColumn ProductLastDateDelivery;
+        private TextBox UnloadDataBox;
+        private TextBox LoadDataBox;
     }
 }

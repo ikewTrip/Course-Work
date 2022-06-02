@@ -115,37 +115,57 @@ namespace Storage
             return totalInventoryText;
         }
 
-        public string SetArrivalText(Product product, int Cost, int Count)
-        {
-            string str = "        Прибуткова накладна\n\n";
-            string descr = "До складу надійшов товар з такими параметрами:\n";
-            string name = $"Найменування: {product.Name}\n";
-            string measure = $"Одиниці вимірювання: {product.Measure}\n";
-            string cost1 = $"Ціна за одиницю: {Cost}\n";
-            string count1 = $"Кількість одиниць: {Count}\n";
-            string lastDateDelivery = $"Остання дата завезення: {product.LastDateDelivery}\n";
-
-            return str + descr + name + measure + cost1 + count1 + lastDateDelivery;
-        }
-
-        public string SetUnloadingText(DataGridView table)
+        public string SetArrivalText(string str)
         {
             string result = "";
-            string str = "        Видаткова накладна\n\n";
-            string descr = $"Зі складу відгружено {table.SelectedRows.Count} товарів(-а) з такими параметрами:\n\n";
-            result += str + descr;
-            int i = 1;
+            string unload = "        Прибуткова накладна\n\n";
+            string descr = $"До складу надійшли товари з такими параметрами:\n\n";
+            result += unload + descr;
 
-            foreach (DataGridViewRow row in table.SelectedRows)
+            string[] productParams = str.Split(";");
+
+            foreach (string param in productParams)
             {
-                string counter = $"Товар №{i}\n"; 
-                string name = $"Найменування: {row.Cells[0].Value}\n";
-                string measure = $"Одиниці вимірювання: {row.Cells[1].Value}\n";
-                string cost1 = $"Ціна за одиницю: {row.Cells[2].Value}\n";
-                string count1 = $"Кількість одиниць: {row.Cells[3].Value}\n";
-                string lastDateDelivery = $"Остання дата завезення: {row.Cells[4].Value}\n\n";
-                i++;
-                result += counter + name + measure + cost1 + count1 + lastDateDelivery;
+                if (param != "")
+                {
+                    string[] props = param.Split(".");
+
+                    string name = "Назва: " + props[0] + ";\n";
+                    string measure = "Одиниці вимірювання: " + props[1] + ";\n";
+                    string cost = "Ціна за одиницю: " + props[2] + ";\n";
+                    string count = "Кількість (од.): " + props[3] + ";\n";
+                    string date = "Дата останнього завезення: " + props[4] + "." + props[5] + "." + props[6] + ";\n\n";
+
+                    result += name + measure + cost + count + date;
+                }
+            }
+
+            return result;
+        }
+
+        public string SetUnloadingText(string str)  
+        {
+            string result = "";
+            string unload = "        Видаткова накладна\n\n";
+            string descr = $"Зі складу відгружено товари з такими параметрами:\n\n";
+            result += unload + descr;
+
+            string[] productParams = str.Split(";");
+            
+            foreach (string param in productParams)
+            {
+                if (param != "")
+                {
+                    string[] props = param.Split(".");
+
+                    string name = "Назва: " + props[0] + ";\n";
+                    string measure = "Одиниці вимірювання: " + props[1] + ";\n";
+                    string cost = "Ціна за одиницю: " + props[2] + ";\n";
+                    string count = "Кількість (од.): " + props[3] + ";\n";
+                    string date = "Дата останнього завезення: " + props[4] + "." + props[5] + "." + props[6] + ";\n\n";
+
+                    result += name + measure + cost + count + date;
+                }
             }
 
             return result;
