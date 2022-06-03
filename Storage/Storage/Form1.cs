@@ -95,9 +95,10 @@ namespace Storage
                 {
                     int total = int.Parse(StorageTable.Rows[i].Cells[3].Value.ToString()) + Count;
                     StorageTable.Rows[i].Cells[3].Value = total;
-                    LoadDataBox.Text += EnteredProductLabel.Text + "." + MeasuresBox.Text + "."
-                            + EnteredProductCost.Text + "." + Count.ToString() + "." + DayBox.Text + "."
-                            + MonthsBox.Text + "." + YearsBox.Text + ";";
+                    StorageTable.Rows[i].Cells[4].Value = aP.LastDateDelivery; 
+                    LoadDataBox.Text += EnteredProductLabel.Text + "," + MeasuresBox.Text + ","
+                            + EnteredProductCost.Text + "," + Count.ToString() + "," + DayBox.Text + ","
+                            + MonthsBox.Text + "," + YearsBox.Text + "," + DateTime.Now + ";";
                     return;
                 }
             }
@@ -105,9 +106,9 @@ namespace Storage
             if (aP.Measure != "No" && isOk == true)
             {
                 StorageTable.Rows.Add(aP.Name, aP.Measure, Cost, Count, aP.LastDateDelivery);
-                LoadDataBox.Text += EnteredProductLabel.Text + "." + MeasuresBox.Text + "."
-                            + EnteredProductCost.Text + "." + Count.ToString() + "." + DayBox.Text + "."
-                            + MonthsBox.Text + "." + YearsBox.Text + ";";
+                LoadDataBox.Text += EnteredProductLabel.Text + "," + MeasuresBox.Text + ","
+                            + EnteredProductCost.Text + "," + Count.ToString() + "," + DayBox.Text + ","
+                            + MonthsBox.Text + "," + YearsBox.Text + "," + DateTime.Now + ";";
                 EnteredProductLabel.Clear();
                 MeasuresBox.ResetText();
                 EnteredProductCost.Clear();
@@ -205,9 +206,9 @@ namespace Storage
                         StorageTable.Rows[rowIndex].Cells[3].Value = currentCount - Count;
                         EnteredProductCount.Text = StorageTable.Rows[rowIndex].Cells[3].Value.ToString();
 
-                        UnloadDataBox.Text += EnteredProductLabel.Text + "." + MeasuresBox.Text + "."
-                            + EnteredProductCost.Text + "." + Count.ToString() + "." + DayBox.Text + "."
-                            + MonthsBox.Text + "." + YearsBox.Text + ";";
+                        UnloadDataBox.Text += EnteredProductLabel.Text + "," + MeasuresBox.Text + ","
+                            + EnteredProductCost.Text + "," + Count.ToString() + "," + DayBox.Text + ","
+                            + MonthsBox.Text + "," + YearsBox.Text + "," + DateTime.Now + ";";
 
                         if (StorageTable.Rows[rowIndex].Cells[3].Value.ToString() == "0")
                         {

@@ -128,15 +128,16 @@ namespace Storage
             {
                 if (param != "")
                 {
-                    string[] props = param.Split(".");
+                    string[] props = param.Split(",");
 
                     string name = "Назва: " + props[0] + ";\n";
                     string measure = "Одиниці вимірювання: " + props[1] + ";\n";
                     string cost = "Ціна за одиницю: " + props[2] + ";\n";
                     string count = "Кількість (од.): " + props[3] + ";\n";
-                    string date = "Дата останнього завезення: " + props[4] + "." + props[5] + "." + props[6] + ";\n\n";
+                    string date = "Дата останнього завезення: " + props[4] + "." + props[5] + "." + props[6] + ";\n";
+                    string time = "Час прибуття: " + props[7] + ";\n\n"; 
 
-                    result += name + measure + cost + count + date;
+                    result += name + measure + cost + count + date + time;
                 }
             }
 
@@ -156,15 +157,16 @@ namespace Storage
             {
                 if (param != "")
                 {
-                    string[] props = param.Split(".");
+                    string[] props = param.Split(",");
 
                     string name = "Назва: " + props[0] + ";\n";
                     string measure = "Одиниці вимірювання: " + props[1] + ";\n";
                     string cost = "Ціна за одиницю: " + props[2] + ";\n";
                     string count = "Кількість (од.): " + props[3] + ";\n";
-                    string date = "Дата останнього завезення: " + props[4] + "." + props[5] + "." + props[6] + ";\n\n";
+                    string date = "Дата останнього завезення: " + props[4] + "." + props[5] + "." + props[6] + ";\n";
+                    string time = "Час відгрузки: " + props[7] + ";\n\n";
 
-                    result += name + measure + cost + count + date;
+                    result += name + measure + cost + count + date + time;
                 }
             }
 
