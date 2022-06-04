@@ -124,6 +124,9 @@ namespace Storage
 
             string[] productParams = str.Split(";");
 
+            int totalCount = 0;
+            int totalCost = 0;
+
             foreach (string param in productParams)
             {
                 if (param != "")
@@ -135,11 +138,16 @@ namespace Storage
                     string cost = "Ціна за одиницю: " + props[2] + ";\n";
                     string count = "Кількість (од.): " + props[3] + ";\n";
                     string date = "Дата останнього завезення: " + props[4] + "." + props[5] + "." + props[6] + ";\n";
-                    string time = "Час прибуття: " + props[7] + ";\n\n"; 
+                    string time = "Час прибуття: " + props[7] + ";\n\n";
+
+                    totalCount += int.Parse(props[3]);
+                    totalCost += int.Parse(props[3]) * int.Parse(props[2]);
 
                     result += name + measure + cost + count + date + time;
                 }
             }
+
+            result += $"ПІДСУМОК:\n{totalCount} товарів прибуло на суму {totalCost}.";
 
             return result;
         }
@@ -152,7 +160,10 @@ namespace Storage
             result += unload + descr;
 
             string[] productParams = str.Split(";");
-            
+
+            int totalCount = 0;
+            int totalCost = 0;
+
             foreach (string param in productParams)
             {
                 if (param != "")
@@ -166,10 +177,15 @@ namespace Storage
                     string date = "Дата останнього завезення: " + props[4] + "." + props[5] + "." + props[6] + ";\n";
                     string time = "Час відгрузки: " + props[7] + ";\n\n";
 
+                    totalCount += int.Parse(props[3]);
+                    totalCost += int.Parse(props[3]) * int.Parse(props[2]); 
+
                     result += name + measure + cost + count + date + time;
                 }
             }
 
+            result += $"ПІДСУМОК:\n{totalCount} товарів відгружено на суму {totalCost}.";
+            
             return result;
         }
 
